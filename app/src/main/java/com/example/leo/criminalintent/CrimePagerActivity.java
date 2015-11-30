@@ -8,11 +8,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by leo on 15-11-30.
  */
-public class CrimePageActivity extends FragmentActivity {
+public class CrimePagerActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private ArrayList<Crime> mCrimes;
 
@@ -38,6 +39,15 @@ public class CrimePageActivity extends FragmentActivity {
                 return mCrimes.size();
             }
         });
+
+        //设置当前所选的page为用户点击的
+        UUID crimeId = (UUID)getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
+        for (int i = 0; i< mCrimes.size(); i++){
+            if(mCrimes.get(i).getmId().equals(crimeId)){
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
 
     }
 }
