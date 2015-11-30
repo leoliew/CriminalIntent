@@ -34,6 +34,11 @@ public class Crime {
         return mSolved;
     }
 
+
+    public void setmDate(Date mDate) {
+        this.mDate = mDate;
+    }
+
     public Date getmDate() {
         return mDate;
     }
