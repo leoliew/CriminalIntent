@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,9 +29,11 @@ import java.util.UUID;
  * A placeholder fragment containing a simple view.
  */
 public class CrimeFragment extends Fragment {
-    public static final String EXTRA_CRIME_ID = "com.example.leo.criminalintent.crime_id";
+    public static final String EXTRA_CRIME_ID = "com.example.leo.criminalintent.CRIME_ID";
+    public static final String TAG = "CrimeFragment";
     private static  final String DIALOG_DATE = "date";
     private static final int REQUEST_DATE = 0;
+
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
@@ -138,5 +141,11 @@ public class CrimeFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        CrimeLab.get(getActivity()).saveCrimes();
     }
 }
