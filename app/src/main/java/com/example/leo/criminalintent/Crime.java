@@ -1,5 +1,7 @@
 package com.example.leo.criminalintent;
 
+import android.provider.ContactsContract;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,6 +20,8 @@ public class Crime {
     private static final String JSON_TITLE = "title";
     private static final String JSON_SOLVED = "solved";
     private static final String JSON_DATE = "date";
+    private static final String JSON_PHOTO = "photo";
+    private Photo mPhoto;
 
     public Crime() {
         //Generate unique identifier
@@ -73,5 +77,13 @@ public class Crime {
     @Override
     public String toString(){
         return mTitle;
+    }
+
+    public Photo getPhoto() {
+        return mPhoto;
+    }
+
+    public void setPhoto(Photo photo) {
+        mPhoto = photo;
     }
 }
